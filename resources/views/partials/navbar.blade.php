@@ -9,15 +9,20 @@
 	  			</button>
 	  		<div class="collapse navbar-collapse" id="navbarNav">
 	    		<ul class="navbar-nav">
-	      			<li class="nav-item {{ ($title === 'Home') ? 'active' : '' }}">
+	      			<li class="nav-item {{ ($active === 'home') ? 'active' : '' }}">
 	        			<a class="nav-link" href="/">Home</a>
 	      			</li>
-	      			<li class="nav-item {{ ($title === 'About') ? 'active' : '' }}">
+	      			<li class="nav-item {{ ($active === 'about') ? 'active' : '' }}">
 	        			<a class="nav-link" href="/about">About</a>
 	      			</li>
-	      			<li class="nav-item {{ ($title === 'Blog') ? 'active' : '' }}">
+
+	      			<li class="nav-item {{ ($active === 'blog') ? 'active' : '' }}">
 	        			<a class="nav-link" href="/blog">Blog</a>
 	      			</li>
+	      			<li class="nav-item {{ ($active === 'categories') ? 'active' : '' }}">
+	        			<a class="nav-link" href="/categories">Categories</a>
+	      			</li>
+
 	    		</ul>
 	    	</div>
   		</div>
