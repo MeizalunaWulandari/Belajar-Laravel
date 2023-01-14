@@ -10,26 +10,40 @@
       		@csrf
       		<div class="mb-3">
       			<label for="title" class="form-label">Title</label>
-      			<input type="text" class="form-control" id="title" name="title">
+      			<input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" id="title" name="title" required>
+                @error('title')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
       		</div>
 
       		<div class="mb-3">
       			<label for="slug" class="form-label">Slug</label>
-      			<input type="text" class="form-control" id="slug" name="slug">
+      			<input type="text" class="form-control @error('slug') is-invalid @enderror" value="{{ old('slug') }}" id="slug" name="slug" required>
+                @error('slug')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
       		</div>
             
             <div class="mb-3">
                 <label for="category" class="form-label">Slug</label>
-                <select class="form-select" name="category_id">
+                <select class="form-select" name="category_id" required>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @if (old('category_id') == $category->id)
+                            <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                        @else
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endif
+
                     @endforeach
                 </select>
             </div>
 
             <div class="mb-3">
-                <label for="slug" class="form-label">Slug</label>
-                <input type="hidden" id="body" name="body">
+                <label for="slug" class="form-label">Body</label>
+                @error('body')
+                    <small class="text-danger"><br>{{ $message }}</small>
+                @enderror
+                <input type="hidden" id="body" name="body" value="{{ old('body') }}">
                 <trix-editor input="body"></trix-editor>
             </div>
 
