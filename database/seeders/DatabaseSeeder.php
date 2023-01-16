@@ -16,7 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(5)->create();
+
+        User::create([
+            'name' => 'Meizaluna Wulandari',
+            'email' => 'meiza1905@gmail.com',
+            'username' => 'meiza1905',
+            'password' => bcrypt('1sampai8')
+        ]);
+
+        User::create([
+            'name' => 'Rizka Amelia Hasannah',
+            'email' => 'rizka424@gmail.com',
+            'username' => 'rizka424',
+            'password' => bcrypt('1sampai8')
+        ]);
 
         Category::create([
             'name' => 'Web Programming',
@@ -29,11 +42,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
+            'name' => 'Travel',
+            'slug' => 'travel'
+        ]);
+
+        Category::create([
+            'name' => 'Games',
+            'slug' => 'games'
+        ]);
+
+        Category::create([
             'name' => 'Personal',
             'slug' => 'personal'
         ]);
  
-        Post::factory(100)->create();
+        Post::factory(10)->create();
     
     }
 }

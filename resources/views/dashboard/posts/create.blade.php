@@ -6,7 +6,7 @@
       </div>
 
       <div class="col-lg-8">
-      	<form action="/dashboard/posts" method="POST">
+      	<form action="/dashboard/posts" method="POST" enctype="multipart/form-data">
       		@csrf
       		<div class="mb-3">
       			<label for="title" class="form-label">Title</label>
@@ -36,6 +36,16 @@
 
                     @endforeach
                 </select>
+            </div>
+
+            <div class="mb-3">
+                  <label for="image" class="form-label">Post image</label>
+                  <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+
+                @error('image')
+                    <small class="text-danger"><br>{{ $message }}</small>
+                @enderror  
+
             </div>
 
             <div class="mb-3">
